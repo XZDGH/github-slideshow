@@ -1,13 +1,39 @@
-# Your GitHub Learning Lab Repository for Introducing GitHub
+# 单位平台软件：开发侧阶段手册
 
-Welcome to **your** repository for your GitHub Learning Lab course. This repository will be used during the different activities that I will be guiding you through. See a word you don't understand? We've included an emoji 📖 next to some key terms. Click on it to see its definition.
+给 **开发人员** 的参考意见：单位内部平台从立项到稳定运维，每个阶段你要做什么、仓库里留下什么、怎样算过关。
 
-Oh! I haven't introduced myself...
+完整文字版：[docs/developer-stages.md](docs/developer-stages.md)
 
-I'm the GitHub Learning Lab bot and I'm here to help guide you in your journey to learn and master the various topics covered in this course. I will be using Issue and Pull Request comments to communicate with you. In fact, I already added an issue for you to check out.
+幻灯片在 `_posts/`，用来对内讲解同一套过程。
 
-![issue tab](https://lab.github.com/public/images/issue_tab.png)
+## 先看结论
 
-I'll meet you over there, can't wait to get started!
+后期稳不稳，不取决于上线那天的加班。开发要把这三件事做成仓库里的硬产物：
 
-This course is using the :sparkles: open source project [reveal.js](https://github.com/hakimel/reveal.js/). In some cases we’ve made changes to the history so it would behave during class, so head to the original project repo to learn more about the cool people behind this project.
+1. **可重复部署** — 换一台机器也能按文档装起来
+2. **可快速回滚** — 发坏了能在约定时间内退回
+3. **可书面交接** — 人不在场，系统还能续命
+
+业务功能可以后写。上面三件不做，生产会变成唯一的测试环境。
+
+## 开发在每个阶段做什么
+
+| 阶段 | 你做的事 | 仓库里留下 |
+| --- | --- | --- |
+| 0 立项 | 写成 3–5 个真实场景 | `docs/scope.md` |
+| 1 架构 | 画部署图，定登录和表 | `docs/architecture.md` |
+| 2 环境 | 一键拉起应用+库 | `.env.example`、迁移 |
+| 3 工程 | 一条命令能构建和测试 | CI、锁文件、测试 |
+| 4 部署 | 只保留一种装法 | `deploy/`、`/health` |
+| 5 发布 | 检查单 + 可演练回滚 | 发布单、tag |
+| 6 备份 | 脚本能备也能恢复 | `scripts/backup.sh` |
+| 7 交接 | 第二个人按手册能接管 | `docs/runbook.md` |
+
+## 本地查看幻灯片
+
+```sh
+script/setup
+script/server
+```
+
+浏览器打开提示的本地地址，用方向键翻页。
